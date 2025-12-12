@@ -1,0 +1,162 @@
+/* todo.css - clean modern styling for a Django todo app */
+
+/* --- Basic reset --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+
+/* --- Page background & font --- */
+body{
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg, #f6f8ff 0%, #eef9f6 50%, #fffaf0 100%);
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* --- Main container --- */
+.container {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(22, 28, 37, 0.08);
+  padding: 28px;
+  margin-bottom: 40px;
+  transform: translateY(0);
+}
+
+/* --- Header --- */
+.app-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.app-header h1{
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+.app-sub {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* --- Form styles --- */
+.form-row {
+  display:flex;
+  gap: 12px;
+  align-items:center;
+  margin-bottom: 18px;
+  flex-wrap:wrap;
+}
+input[type="text"], textarea, select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  min-width: 0;
+  font-size: 0.98rem;
+  outline: none;
+  background: #fbfdff;
+}
+input[type="text"]:focus, textarea:focus, select:focus {
+  border-color: #7c93ff;
+  box-shadow: 0 6px 18px rgba(124,147,255,0.08);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  font-size: 0.95rem;
+}
+.btn-primary {
+  background: linear-gradient(90deg,#4f46e5,#7c93ff);
+  color:#fff;
+  box-shadow: 0 8px 20px rgba(79,70,229,0.18);
+}
+.btn-ghost {
+  background: transparent;
+  color:#374151;
+  border: 1px solid #e6e9ee;
+}
+
+/* --- Task list --- */
+.task-list { margin-top: 12px; display: grid; gap: 10px; }
+.task {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #f1f4f8;
+  box-shadow: 0 4px 10px rgba(16,24,40,0.03);
+}
+.task-left { display:flex; align-items:center; gap: 12px; min-width: 0; }
+.checkbox {
+  width:18px; height:18px;
+  border-radius:4px;
+  border: 1.5px solid #d1d5db;
+  display:inline-block;
+  position:relative;
+  cursor:pointer;
+}
+.task-title {
+  font-size: 1rem;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 52ch;
+}
+
+/* completed */
+.task-complete .task-title {
+  text-decoration: line-through;
+  color:#94a3b8;
+}
+
+/* action links */
+.task-actions { display:flex; gap:8px; align-items:center; }
+.link {
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: none;
+}
+.link-update { background:#fff; border:1px solid #e6e9ee; color:#374151; }
+.link-delete { background: #fff7f6; border:1px solid #ffd6d0; color:#b91c1c; }
+
+/* smaller screens */
+@media (max-width:640px){
+  .form-row { flex-direction: column; align-items:stretch; }
+  .task-title { max-width: 32ch; font-size: 0.96rem; }
+}
+
+/* --- Delete confirmation page --- */
+.delete-box {
+  padding: 28px;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#fffaf0,#fff8f0);
+  border:1px solid #ffe7cc;
+  text-align:center;
+}
+.delete-box p { font-size: 1.03rem; margin-bottom: 18px; color:#7c2d2d; }
+.delete-actions { display:flex; gap:12px; justify-content:center; }
+
+/* small helpers */
+.muted { color:#6b7280; font-size:0.95rem; }
+.center { text-align:center; }

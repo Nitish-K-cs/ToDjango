@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/todo.css' %}">
+
+<div class="container delete-box">
+  <p>Are you sure you want to delete "<strong>{{ item }}</strong>"?</p>
+
+  <div class="delete-actions">
+    <a class="btn btn-ghost" href="{% url 'list' %}">Cancel</a>
+
+    <form method="POST" action="">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Confirm">
+    </form>
+  </div>
+</div>

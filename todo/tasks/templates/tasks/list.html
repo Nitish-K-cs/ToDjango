@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/todo.css' %}">
+
+<div class="container">
+  <div class="app-header">
+    <h1>To do</h1>
+    <div class="app-sub">Quickly capture and organize tasks</div>
+  </div>
+
+  <form method="POST" action="/" class="form-row">
+    {% csrf_token %}
+    {{ form.title }}
+    <input type="submit" class="btn btn-primary" value="Create task">
+  </form>
+
+  <div class="task-list">
+    {% for task in tasks %}
+      <div class="task {% if task.complete %}task-complete{% endif %}">
+        <div class="task-left">
+          <div class="checkbox" title="mark complete"></div>
+          <div class="task-title">
+            {% if task.complete %}<strike>{{ task }}</strike>{% else %}{{ task }}{% endif %}
+          </div>
+        </div>
+
+        <div class="task-actions">
+          <a class="link link-update" href="{% url 'update_task' task.id %}">Update</a>
+          <a class="link link-delete" href="{% url 'delete' task.id %}">Delete</a>
+        </div>
+      </div>
+    {% empty %}
+      <p class="muted center">No tasks yet — create your first one above.</p>
+    {% endfor %}
+  </div>
+</div>
