@@ -1,22 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 </head>
 <body>
 
-<h2>Register</h2>
+  <div class="auth-card">
+    <h2 class="auth-title">Create account ✨</h2>
+    <p class="auth-sub">Start organizing your tasks</p>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="auth-btn">Register</button>
+    </form>
 
-<p>
-    Already have an account?
-    <a href="{% url 'login' %}">Login</a>
-</p>
+    <div class="auth-footer">
+      Already have an account?
+      <a href="{% url 'login' %}">Login</a>
+    </div>
+  </div>
 
 </body>
 </html>

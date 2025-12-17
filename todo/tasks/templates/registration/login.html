@@ -1,9 +1,27 @@
-<h1>Login</h1>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Login">
-</form>
+  <div class="auth-card">
+    <h2 class="auth-title">Welcome back 👋</h2>
+    <p class="auth-sub">Login to manage your tasks</p>
 
-<p>Don't have an account? <a href = "{% url 'register' %}">Register</a> </p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+
+    <div class="auth-footer">
+      Don’t have an account?
+      <a href="{% url 'register' %}">Register</a>
+    </div>
+  </div>
+
+</body>
+</html>
